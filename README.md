@@ -75,7 +75,7 @@ response = requests.post('http://localhost:8000/parse-cv/', files=files)
 ```
 
 
-### Limitations
+## Limitations
 
 1. **Layout Detection**
 
