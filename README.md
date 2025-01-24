@@ -47,7 +47,7 @@ FastAPI provides automatic interactive API documentation:
    - Click "Execute"
    - View the response below
 
-## 2. API Endpoint Direct Usage
+### 2. API Endpoint Direct Usage
 
 ```python
 
