@@ -254,6 +254,53 @@ app.add_middleware(
 ```
 
 
+## Design Philosophy
+
+### Simplicity Over Complexity
+
+The parser follows a minimalist approach focusing on two key structural levels:
+
+1.**Headers (depth: 1)**
+
+- Main sections of the document
+- Detected through multiple formatting characteristics:
+
+  - Text in uppercase OR
+  - Font size significantly larger than document average (≥ avg + 0.7) AND
+  - Short text (≤ 2 words) AND
+  - Not ending with sentence punctuation (., ,)
+- Examples: "SKILLS", "EDUCATION", "EXPERIENCE"
+
+2.**Content (depth: 2)**
+
+- Information under each header
+- Regular text and details
+- Examples: skill lists, job descriptions, education details
+
+### Why Two Levels?
+
+While the system was initially designed to support multiple depth levels based on font sizes, this was simplified to two levels because:
+
+1.**Practical Usage**
+
+- Most CVs naturally follow a two-level structure
+- Headers → Content organization is most common
+- Deeper nesting rarely adds value
+
+2.**Reliability**
+
+- Font-based depth detection can be unreliable
+- Simpler structure means more consistent results
+- Reduces false positives in section detection
+
+3.**Maintainability**
+
+- Clearer, more predictable output structure
+- Easier to process downstream
+- More stable across different CV formats
+
+
+
 ## License
 
 MIT License - See LICENSE file for details
